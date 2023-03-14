@@ -9,4 +9,8 @@ router.get('/test2', (req, res) => {
     res.send('Second test')
 })
 
+router.get('/test3', (req, res) => {
+    res.send('3rd test')
+})
+
 module.exports = router;
