@@ -1,41 +1,24 @@
 const express = require('express');
 const router = express.Router();
+const friendsController = require('../controllers/friendsController')
 
-const friends = [
-    {
-        id: 1,
-        name: 'Amy Adams'
-    },
-    {
-        id: 2,
-        name: 'Betty Brown'
-    },
-    {
-        id: 3,
-        name: 'Caitlin Coombs'
-    }      
-]
 
+//requesting all friend list
 router.get('/all', (req, res) => {
-    res.json(friends)
+    friendsController.getFriends(res); 
+    
 })
 
 router.get('/:id', (req, res) => {
-    console.log(req.params)
-    //gets the value stored in id via request parameters
-    let idParam = req.params.id;
-
-    let matchingFriend = friends.find(friend => friend.id == idParam)
-    res.json(matchingFriend)
+    console.log('test')
+    // res.send('test')
+    friendsController.getFriend(req.params.id, res);  
 })
 
 router.post('/new', (req, res) => {
     let newFriend = req.body;
     console.log(newFriend)
-    
-    
-    friends.push(newFriend)
-    res.json(newFriend)
+    friendsController.createFriend(newFriend, res)
 })
 
 module.exports = router;

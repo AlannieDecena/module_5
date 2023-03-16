@@ -34,7 +34,7 @@
     <script>
 
         let numFriends = 0; //setting the number of friends to 0
-
+        // the function bellow for the getting all friendList and displaying it on the html page.
         function listFriends() {
             document.getElementById('friendList').innerText = '';
 
@@ -49,12 +49,13 @@
                 numFriends = friends.length 
             })
         }
-
+// genrating any random id num of friend
         function getRandomFriend() {
-            let randomId = Math.ceil(Math.random() * numFriends); // genrating any random id num of friend
+            let randomId = Math.ceil(Math.random() * numFriends);
+            // console.log('test') 
             fetch('/friends/'+randomId).then(resp => resp.json())
             .then(friend => {
-                    document.getElementById('randomFriend').innerText = 'My best friend is '+friend.name
+                    document.getElementById('randomFriend').innerText = 'My best friend is '+friend.name;
             })            
         }
 
